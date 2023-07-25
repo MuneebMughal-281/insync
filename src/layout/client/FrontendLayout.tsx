@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '@src/layout/client/Navbar';
+
 export const FrontendLayout = () => {
   return (
     <div className='app'>
