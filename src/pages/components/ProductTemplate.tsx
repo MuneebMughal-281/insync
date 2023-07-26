@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   Card,
   CardMedia,
@@ -9,9 +8,6 @@ import {
   Button,
 } from '@mui/material';
 
-const openSingleProduct = (event) => {
-  console.log(event);
-};
 export const ProductTemplate = (props: any) => {
   return (
     <Card sx={{ maxWidth: '100%' }}>
@@ -40,10 +36,4 @@ export const ProductTemplate = (props: any) => {
       </CardActions>
     </Card>
   );
-};
-ProductTemplate.propTypes = {
-  productTitle: PropTypes.string,
-  productPrice: PropTypes.number,
-  productCategory: PropTypes.string,
-  productImage: PropTypes.string,
 };

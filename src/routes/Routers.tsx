@@ -7,6 +7,7 @@ import { About } from '@src/pages/About';
 import { Login } from '@src/pages/Login';
 import { Password } from '@src/pages/Password';
 import { Register } from '@src/pages/Register';
+import { SingleProduct } from '@src/pages/SingleProduct';
 export const Routers = () => {
   return (
     <Routes>
@@ -14,11 +15,12 @@ export const Routers = () => {
       <Route path='/' element={<FrontendLayout />}>
         <Route index element={<Home title='Home' />} />
         <Route path='home' element={<Home title='Home' />} />
+        <Route path='products' element={<Home title='Products' />} />
+        <Route path='about' element={<About />} />
+        <Route path='register' element={<Register />} />
+        <Route path='password' element={<Password />} />
+        <Route path='/products/:productId' element={<SingleProduct />} />
       </Route>
-      <Route path='products' element={<Home title='Products' />} />
-      <Route path='about' element={<About />} />
-      <Route path='register' element={<Register />} />
-      <Route path='password' element={<Password />} />
     </Routes>
   );
 };
