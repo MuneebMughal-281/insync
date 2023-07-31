@@ -7,38 +7,43 @@ export const SingleProduct = () => {
   const { productId } = useParams();
   const { data, error } = fetchData({ url: `products/${productId}` });
   const singleProduct = data;
-  const productImages = data.images || [];
+  // const productImages = data.images || [];
   if (error) {
     return <div>Error: {error.message}</div>;
-  } else if (!singleProduct || !Array.isArray(productImages)) {
+  } else if (!singleProduct) {
     return <div>Loading...</div>;
   }
   return (
     <React.Fragment>
       <Box sx={{ width: '100%', display: 'flex', px: 1, py: 5 }}>
         <Box sx={{ width: '50%', overflowX: 'hidden', px: 2 }}>
-          <Grid sx={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-            {productImages.map((item: string) => (
-              <Grid
-                key={item}
-                sx={{
-                  width: '49%',
+          <Grid
+            sx={{
+              display: 'flex',
+              gap: '0.6rem',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Grid
+              sx={{
+                width: '49%',
+                height: '400px',
+                overflow: 'hidden',
+              }}
+            >
+              <img
+                style={{
+                  width: '100%',
                   height: '400px',
-                  overflow: 'hidden',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
                 }}
-              >
-                <img
-                  style={{
-                    width: '100%',
-                    height: '400px',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                  }}
-                  src={item}
-                  alt={singleProduct.title}
-                />
-              </Grid>
-            ))}
+                src={singleProduct.image}
+                alt={singleProduct.title}
+              />
+            </Grid>
           </Grid>
         </Box>
         <Box sx={{ width: '50%', overflowX: 'hidden', px: 2 }}>

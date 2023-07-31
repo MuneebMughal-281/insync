@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { fetchData } from '@src/pages/components/fetchData';
 import { ProductTemplate } from '@src/pages/components/ProductTemplate';
 import { styled, Grid, Paper, Box } from '@mui/material';
@@ -11,11 +11,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export const ProductItem = () => {
-  const { data, error } = fetchData({ url: 'products' });
-  const products = data;
-  // console.log(data);
-
+export const SingleCategory = () => {
+  const { category } = useParams();
+  const { data, error } = fetchData({ url: `products/category/${category}` });
+  const products = data.products;
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!products || !Array.isArray(products)) {

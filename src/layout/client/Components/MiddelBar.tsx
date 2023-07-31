@@ -8,11 +8,11 @@ import {
   InputBase,
   Badge,
 } from '@mui/material';
-// import SearchIcon from '@mui/icons-material/Search';
+// import { Search } from '@mui/icons-material';
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 // import MailIcon from '@mui/icons-material/Mail';
 // import NotificationsIcon from '@mui/icons-material/Notifications';
-// import MoreIcon from '@mui/icons-material/MoreVert';
+// // import MoreIcon from '@mui/icons-material/MoreVert';
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -23,7 +23,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
 }));
-const Search = styled('div')(({ theme }) => ({
+const Searchbox = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: '35px',
   border: '1px solid',
@@ -70,13 +70,13 @@ export const MiddelBar = () => {
       <AppBarWrap>
         <Toolbar>
           <Box sx={{ width: { md: '100%', lg: '15%' } }}>
-            <Search>
-              <SearchIconWrapper>{/* <SearchIcon /> */}</SearchIconWrapper>
+            <Searchbox>
+              <SearchIconWrapper>{/* <Search /> */}</SearchIconWrapper>
               <StyledInputBase
                 placeholder='Search InSync'
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </Search>
+            </Searchbox>
           </Box>
           <Box
             sx={{

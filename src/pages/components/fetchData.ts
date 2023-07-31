@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_SERVER } from '@src/config/env';
+import { API_STORE } from '@src/config/env';
 
 export const fetchData = (props: any) => {
   const [data, setData] = useState<any>([]);
@@ -8,7 +8,7 @@ export const fetchData = (props: any) => {
 
   useEffect(() => {
     axios
-      .get(`${API_SERVER}${props.url}`)
+      .get(`${API_STORE}${props.url}`)
       .then((res) => {
         setData(res.data);
       })

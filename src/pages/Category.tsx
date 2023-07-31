@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchData } from '@src/pages/components/fetchData';
 import { Grid, Box, styled, Typography } from '@mui/material';
+import { fetchData } from '@src/pages/components/fetchData';
+import { Loading } from '@src/pages/components/Loading';
 const CardWrap = styled(Grid)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.common.black,
@@ -16,9 +17,8 @@ export const Category = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!category || !Array.isArray(category)) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
-  const categories = category.slice(0, 5);
   return (
     <React.Fragment>
       <Typography sx={{ textAlign: 'center', mt: 3 }}>
@@ -37,10 +37,10 @@ export const Category = () => {
         }}
         my={2}
       >
-        {categories.map((item: string) => (
+        {category.map((item: string) => (
           <CardWrap key={item}>
             <Link
-              to={item}
+              to={`/products/category/${item}`}
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -54,18 +54,14 @@ export const Category = () => {
             >
               <img
                 src={
-                  item === 'smartphones'
-                    ? 'https://www.hallroad.com.pk/wp-content/uploads/2020/07/MOBILETHUMB.png'
-                    : item === 'laptops'
+                  item === 'electronics'
                     ? 'https://images.squarespace-cdn.com/content/v1/569706fb5dc6def15843549d/1598012438800-CJHZELMO6QWC0K4B7WZ3/Best+Laptops+Money+Can+Buy+in+2020+%28August+2020+Updated+List%29.JPG?format=1000w'
-                    : item === 'fragrances'
+                    : item === 'jewelery'
+                    ? 'https://www.hallroad.com.pk/wp-content/uploads/2020/07/MOBILETHUMB.png'
+                    : item === "men's clothing"
                     ? 'https://www.codigonuevo.com/binrepository/sustancias-perfumes-codigo-nuevo-930x600_CN126536_MG11227352.jpg'
-                    : item === 'skincare'
+                    : item === "women's clothing"
                     ? 'https://d3vlxf0ngetfml.cloudfront.net/uploads/2018/04/S0A1911-resized.jpeg'
-                    : item === 'skincare'
-                    ? 'https://home2grocery.files.wordpress.com/2016/12/grocery1.jpg'
-                    : item === 'groceries'
-                    ? 'https://i2-prod.mirror.co.uk/incoming/article9542573.ece/ALTERNATES/n615/Shopping.jpg'
                     : ''
                 }
                 alt={item}
